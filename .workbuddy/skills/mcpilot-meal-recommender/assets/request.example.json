@@ -1,0 +1,29 @@
+{
+  "_comment": "McPilot 示例输入（结构示意，不含任何凭据、Token 或真实账号信息）。字段含义见 references/data-model.md。",
+  "scene": "pickup",
+  "be_type": 1,
+  "city": "示例城市",
+  "keyword": "示例商圈",
+  "store_code": "",
+  "budget": 30,
+  "people": 1,
+  "goals": {
+    "protein_g_min": 25,
+    "energy_kcal_max": 600,
+    "energy_kcal_target": null,
+    "fat_g_max": null
+  },
+  "likes": ["炸鸡"],
+  "dislikes": ["辣"],
+  "include_codes": [],
+  "use_coupon": true,
+  "strategies": ["budget", "nutrition", "balanced"],
+  "max_verify": 12,
+  "_notes": [
+    "store_code 留空表示由技能查询门店后引导用户选择",
+    "budget / goals / likes / dislikes / include_codes 均可缺省",
+    "包含忌口关键词（如 dislikes=[\"辣\"]）的商品会被直接排除出候选",
+    "include_codes 中的商品若不在门店在售菜单中会直接报错，不会静默忽略",
+    "本文件仅用于说明输入结构，不含任何真实数值"
+  ]
+}
