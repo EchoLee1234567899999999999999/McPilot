@@ -1,0 +1,13 @@
+{
+ "success": true,
+ "code": 200,
+ "message": "请求成功",
+ "datetime": "2026-10-09 18:14:31",
+ "traceId": "dde050176b8e97d998204b7153be25c2",
+ "data": {
+  "code": "4810",
+  "name": "中薯条",
+  "rounds": [],
+  "supportModify": false
+ }
+}

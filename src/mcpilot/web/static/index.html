@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover" />
+<meta name="theme-color" content="#087F85" />
+<title>McPilot 麦门决策局 · 真实数据点餐助手</title>
+<meta name="description" content="McPilot 麦门决策局：基于麦当劳官方 MCP 真实数据的智能点餐决策助手。" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16'%3E%3Crect width='16' height='16' fill='%23087F85'/%3E%3Crect x='3' y='6' width='10' height='2' fill='%23FFC72C'/%3E%3Crect x='5' y='4' width='6' height='2' fill='%23FFC72C'/%3E%3Crect x='3' y='10' width='10' height='2' fill='%23FFF9E8'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=DotGothic16&display=swap" rel="stylesheet" />
+<link rel="stylesheet" href="/styles.css" />
+</head>
+<body>
+<div class="scanlines" aria-hidden="true"></div>
+<a class="skip-link" href="#main">跳到主内容</a>
+
+<!-- ================= 顶栏 ================= -->
+<header class="topbar">
+  <div class="window">
+    <div class="window__bar">
+      <span class="dot dot--a" aria-hidden="true"></span>
+      <span class="dot dot--b" aria-hidden="true"></span>
+      <span class="dot dot--c" aria-hidden="true"></span>
+      <span class="window__title">MCPILOT.EXE — 麦门决策局</span>
+      <span class="window__spacer"></span>
+      <span class="conn" id="conn-badge" role="status" aria-live="polite">
+        <span class="conn__led" id="conn-led" aria-hidden="true"></span>
+        <span id="conn-text">检测后端…</span>
+      </span>
+    </div>
+    <div class="topbar__body">
+      <div class="brand">
+        <span class="brand__logo" aria-hidden="true">
+          <svg viewBox="0 0 24 24" width="34" height="34" shape-rendering="crispEdges">
+            <rect x="1" y="1" width="22" height="22" fill="#087F85"/>
+            <rect x="4" y="13" width="16" height="3" fill="#FFC72C"/>
+            <rect x="6" y="10" width="12" height="3" fill="#FFC72C"/>
+            <rect x="8" y="7" width="8" height="3" fill="#FFC72C"/>
+            <rect x="4" y="16" width="16" height="3" fill="#FFF9E8"/>
+            <rect x="18" y="3" width="3" height="3" fill="#F58A28"/>
+          </svg>
+        </span>
+        <span class="brand__text">
+          <strong class="brand__name">McPilot</strong>
+          <span class="brand__sub">麦门决策局</span>
+        </span>
+      </div>
+      <nav class="steps" aria-label="流程步骤">
+        <span class="steps__item is-active" data-step="1"><i>1</i>需求</span>
+        <span class="steps__sep" aria-hidden="true"></span>
+        <span class="steps__item" data-step="2"><i>2</i>查询</span>
+        <span class="steps__sep" aria-hidden="true"></span>
+        <span class="steps__item" data-step="3"><i>3</i>方案</span>
+      </nav>
+    </div>
+  </div>
+</header>
+
+<main id="main">
+
+  <!-- ================= 首页 ================= -->
+  <section class="view" id="view-home" aria-labelledby="home-title">
+    <div class="hero">
+      <div class="hero__left">
+        <p class="kicker">REAL DATA · OFFICIAL MCP</p>
+        <h1 id="home-title">今天吃什么，<br /><span class="hl">让数据替你决策</span></h1>
+        <p class="lede">
+          McPilot 通过麦当劳官方 MCP 实时读取<strong>门店在售菜单、营养数据、门店优惠券</strong>，
+          并对每个候选组合做<strong>真实价格试算</strong>，给出「省钱 / 高蛋白 / 综合」三种可解释方案。
+        </p>
+        <ul class="assure">
+          <li><b aria-hidden="true"></b>价格、营养、券全部来自真实接口，无一条编造</li>
+          <li><b aria-hidden="true"></b>营养无法可靠匹配的商品会明确标注「缺失」</li>
+          <li><b aria-hidden="true"></b>只读查询，绝不代下单 / 领券 / 兑换</li>
+        </ul>
+        <div class="hero__mascot" aria-hidden="true">
+          <div class="pixel-burger">
+            <span class="pb pb--bun1"></span>
+            <span class="pb pb--sesame"></span>
+            <span class="pb pb--lettuce"></span>
+            <span class="pb pb--cheese"></span>
+            <span class="pb pb--patty"></span>
+            <span class="pb pb--bun2"></span>
+          </div>
+        </div>
+      </div>
+
+      <form class="panel" id="form-req" novalidate>
+        <div class="panel__head">
+          <span class="panel__title">▍ 输入你的用餐需求</span>
+          <span class="panel__hint">所有字段均可留空（预算为空时只做种类推荐）</span>
+        </div>
+
+        <fieldset class="field">
+          <legend>预算（元）<span class="req">建议填写</span></legend>
+          <div class="row">
+            <input id="in-budget" name="budget" type="number" inputmode="decimal" min="1" step="1"
+                   placeholder="如 30" aria-describedby="budget-help" />
+            <div class="quick" role="group" aria-label="快捷预算">
+              <button type="button" class="chip" data-budget="20">¥20</button>
+              <button type="button" class="chip" data-budget="30">¥30</button>
+              <button type="button" class="chip" data-budget="50">¥50</button>
+            </div>
+          </div>
+          <p class="help" id="budget-help">实付以官方价格试算为准；超预算的方案不会被推荐。</p>
+        </fieldset>
+
+        <div class="grid2">
+          <fieldset class="field">
+            <legend>用餐人数</legend>
+            <div class="stepper">
+              <button type="button" class="stepper__btn" data-people="-1" aria-label="减少人数">−</button>
+              <input id="in-people" name="people" type="number" min="1" max="20" value="1" />
+              <button type="button" class="stepper__btn" data-people="1" aria-label="增加人数">+</button>
+            </div>
+          </fieldset>
+
+          <fieldset class="field">
+            <legend>门店查询城市</legend>
+            <input id="in-city" name="city" type="text" value="深圳市" placeholder="如 深圳市" />
+          </fieldset>
+        </div>
+
+        <fieldset class="field">
+          <legend>门店关键词<span class="req">用于查真实门店</span></legend>
+          <div class="row">
+            <input id="in-keyword" name="keyword" type="text" placeholder="如 科技园 / 万象城" />
+            <button type="button" class="btn btn--ghost" id="btn-stores">查询门店</button>
+          </div>
+          <div class="store-list" id="store-list" role="radiogroup" aria-label="选择门店">
+            <p class="muted small">先输入城市与关键词，再点「查询门店」——结果来自门店接口。</p>
+          </div>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend>口味偏好<span class="tag-ok">加分项</span></legend>
+          <input id="in-likes" name="likes" type="text" placeholder="如 鸡腿堡, 咖啡（逗号分隔）" />
+        </fieldset>
+
+        <fieldset class="field">
+          <legend>忌口<span class="tag-no">硬约束</span></legend>
+          <input id="in-dislikes" name="dislikes" type="text" placeholder="如 辣, 牛肉（逗号分隔）" />
+          <p class="help">命中忌口的商品及其套餐组成会被直接剔除，不会作为推荐出现。</p>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend>营养目标<span class="tag-ok">仅保留可确认达标者</span></legend>
+          <div class="grid2">
+            <label class="mini">热量上限 (kcal)
+              <input id="in-kcal" type="number" min="0" step="1" placeholder="如 600" />
+            </label>
+            <label class="mini">蛋白质下限 (g)
+              <input id="in-protein" type="number" min="0" step="1" placeholder="如 30" />
+            </label>
+          </div>
+          <p class="help">营养未知的组合无法确认是否达标，会被剔除而非猜测。</p>
+        </fieldset>
+
+        <fieldset class="field">
+          <legend>补充需求<span class="tag-ok">关键词参与口味匹配</span></legend>
+          <textarea id="in-note" rows="2" placeholder="如：想要带饮料的组合，不要太甜"></textarea>
+          <label class="checkbox">
+            <input type="checkbox" id="in-usecoupon" checked />
+            <span>尝试使用门店优惠券（券由接口返回，适用性按真实商品编码判定）</span>
+          </label>
+        </fieldset>
+
+        <p class="form-error" id="form-error" role="alert" hidden></p>
+
+        <button type="submit" class="btn btn--primary btn--lg" id="btn-submit">
+          <span aria-hidden="true">▶</span> 开始决策
+        </button>
+        <p class="help center">将真实调用：门店 → 菜单 → 营养 → 优惠 → 价格试算（约 8–15 秒）</p>
+      </form>
+    </div>
+  </section>
+
+  <!-- ================= 查询状态页 ================= -->
+  <section class="view" id="view-status" hidden aria-labelledby="status-title">
+    <div class="console" role="region" aria-label="查询进度">
+      <div class="console__bar">
+        <span class="console__title" id="status-title">SYSTEM LOG — 真实处理进度</span>
+        <span class="console__time" id="status-timer">00:00</span>
+      </div>
+      <ol class="pipeline" id="pipeline">
+        <li class="stage" data-stage="store"><span class="stage__led"></span><span class="stage__name">门店校验</span><span class="stage__val">待处理</span></li>
+        <li class="stage" data-stage="menu"><span class="stage__led"></span><span class="stage__name">在售菜单查询</span><span class="stage__val">待处理</span></li>
+        <li class="stage" data-stage="nutrition"><span class="stage__led"></span><span class="stage__name">营养数据匹配</span><span class="stage__val">待处理</span></li>
+        <li class="stage" data-stage="coupon"><span class="stage__led"></span><span class="stage__name">优惠券核验</span><span class="stage__val">待处理</span></li>
+        <li class="stage" data-stage="resolve"><span class="stage__led"></span><span class="stage__name">规范名/套餐组成解析</span><span class="stage__val">待处理</span></li>
+        <li class="stage" data-stage="candidates"><span class="stage__led"></span><span class="stage__name">候选组合生成</span><span class="stage__val">待处理</span></li>
+        <li class="stage" data-stage="verify"><span class="stage__led"></span><span class="stage__name">真实价格试算</span><span class="stage__val">待处理</span></li>
+        <li class="stage" data-stage="done"><span class="stage__led"></span><span class="stage__name">生成推荐方案</span><span class="stage__val">待处理</span></li>
+      </ol>
+      <pre class="log" id="log" aria-live="polite" aria-label="日志输出"></pre>
+      <div class="console__foot">
+        <span class="muted small" id="status-note">日志来自后端真实回调，非前端计时器伪造。</span>
+        <button type="button" class="btn btn--ghost" id="btn-cancel">中断并返回</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= 结果页 ================= -->
+  <section class="view" id="view-result" hidden aria-labelledby="result-title">
+    <div class="result-head">
+      <div>
+        <p class="kicker" id="result-kicker">DECISION READY</p>
+        <h2 id="result-title">为你选出 <span id="result-count">0</span> 套方案</h2>
+        <p class="muted small" id="result-meta"></p>
+        <p class="muted small" id="result-scope"></p>
+      </div>
+      <div class="result-head__actions">
+        <button type="button" class="btn btn--ghost" id="btn-back">← 修改需求</button>
+        <button type="button" class="btn btn--primary" id="btn-card">生成决策卡</button>
+      </div>
+    </div>
+
+    <div class="cards" id="cards"></div>
+
+    <!-- 调整建议：位于结果区下方、技术日志之上，视觉上更醒目 -->
+    <section class="adjust" id="adjust-box" hidden aria-labelledby="adjust-title">
+      <header class="adjust__head">
+        <span class="adjust__pixel" aria-hidden="true"></span>
+        <div class="adjust__headtext">
+          <h3 id="adjust-title">试试这样调整</h3>
+          <p class="adjust__sub">
+            以下建议均由本次真实候选与真实试算结果推导（最多 3 条）。
+            点击「带回表单」只填写条件，<strong>不会自动重新查询</strong>，需你确认后手动开始决策。
+          </p>
+        </div>
+      </header>
+      <ul class="adjust__list" id="adjust-list"></ul>
+      <footer class="adjust__foot">
+        <button type="button" class="btn btn--ghost" id="btn-back-2">← 返回修改需求（保留其他已填条件）</button>
+        <span class="muted small">数值均来自官方接口，未编造热量 / 蛋白质 / 价格。</span>
+      </footer>
+    </section>
+
+    <div class="notes">
+      <details class="note note--warn" id="warn-box" hidden>
+        <summary>
+          <span class="note__label">⚠ 数据说明与限制（拒绝原因明细）</span>
+          <span class="note__fold" aria-hidden="true">展开 ▾</span>
+        </summary>
+        <ul id="warn-list"></ul>
+      </details>
+      <details class="note note--data">
+        <summary>
+          <span class="note__label">◈ 数据来源与 MCP 调用明细</span>
+          <span class="note__fold" aria-hidden="true">展开 ▾</span>
+        </summary>
+        <pre id="data-source"></pre>
+      </details>
+    </div>
+  </section>
+
+  <!-- ================= 失败页 ================= -->
+  <section class="view" id="view-fail" hidden aria-labelledby="fail-title">
+    <div class="console console--fail">
+      <div class="console__bar"><span class="console__title">SYSTEM ERROR</span></div>
+      <div class="fail__body">
+        <p class="fail__code" id="fail-code">ERROR</p>
+        <h2 id="fail-title">未能完成本次查询</h2>
+        <p id="fail-msg" class="fail__msg"></p>
+        <p class="muted small" id="fail-hint"></p>
+        <div class="fail__actions">
+          <button type="button" class="btn btn--primary" id="btn-retry">重试</button>
+          <button type="button" class="btn btn--ghost" id="btn-fail-back">返回修改</button>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer class="foot">
+  <p>
+    McPilot · 麦门决策局 ｜ 数据来自麦当劳官方 MCP（只读）｜
+    <span class="muted">本页仅做查询与推荐，不执行下单 / 领券 / 积分兑换</span>
+  </p>
+</footer>
+
+<!-- ================= 决策卡弹窗 ================= -->
+<dialog id="card-dialog" class="card-dialog" aria-labelledby="card-title">
+  <div class="window">
+    <div class="window__bar">
+      <span class="dot dot--a"></span><span class="dot dot--b"></span><span class="dot dot--c"></span>
+      <span class="window__title" id="card-title">决策卡 · 可导出 PNG</span>
+      <span class="window__spacer"></span>
+      <button type="button" class="x" id="card-close" aria-label="关闭">✕</button>
+    </div>
+    <div class="card-dialog__body">
+      <canvas id="card-canvas" width="720" height="1000" aria-label="决策卡预览"></canvas>
+      <div class="card-dialog__side">
+        <p class="small muted">选择要导出的方案：</p>
+        <div class="strategy-tabs" id="card-tabs" role="tablist"></div>
+        <p class="help">导出为 PNG 图片，包含门店、查询时间与数据来源说明。</p>
+        <button type="button" class="btn btn--primary" id="btn-download">下载 PNG</button>
+        <button type="button" class="btn btn--ghost" id="btn-copy-note">复制数据说明</button>
+      </div>
+    </div>
+  </div>
+</dialog>
+
+<div class="toast" id="toast" role="status" aria-live="polite" hidden></div>
+
+<script src="/app.js"></script>
+</body>
+</html>

@@ -1,0 +1,46 @@
+{
+ "success": true,
+ "code": 200,
+ "message": "请求成功",
+ "datetime": "2026-10-09 18:14:32",
+ "traceId": "1acda9affc65ff6b626307577b760b79",
+ "data": {
+  "code": "507387",
+  "name": "卡布奇诺中杯",
+  "rounds": [],
+  "modification": {
+   "items": [
+    {
+     "maxValues": 0,
+     "minValues": 0,
+     "values": []
+    },
+    {
+     "maxValues": 1,
+     "minValues": 1,
+     "values": [
+      {
+       "code": "8008",
+       "price": 0,
+       "name": "不加",
+       "maxQuantity": 1,
+       "minQuantity": 0,
+       "selectedQuantity": 1,
+       "selectedKey": "0-0"
+      },
+      {
+       "code": "8008",
+       "price": 500,
+       "name": "加",
+       "maxQuantity": 1,
+       "minQuantity": 0,
+       "selectedQuantity": 0,
+       "selectedKey": "0-1"
+      }
+     ]
+    }
+   ]
+  },
+  "supportModify": true
+ }
+}

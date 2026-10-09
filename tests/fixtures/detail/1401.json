@@ -1,0 +1,13 @@
+{
+ "success": true,
+ "code": 200,
+ "message": "请求成功",
+ "datetime": "2026-10-09 18:14:31",
+ "traceId": "b995f8c67b86c2de65212e5cabacf4c8",
+ "data": {
+  "code": "1401",
+  "name": "麦乐鸡5块",
+  "rounds": [],
+  "supportModify": false
+ }
+}

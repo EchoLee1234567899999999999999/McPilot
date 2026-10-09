@@ -1,0 +1,35 @@
+{
+ "success": true,
+ "code": 200,
+ "message": "请求成功",
+ "datetime": "2026-10-09 17:29:43",
+ "traceId": "032ff029ab916e20513b5ba6e6329036",
+ "data": {
+  "productOriginalPrice": 2600,
+  "productPrice": 2600,
+  "originalPrice": 2600,
+  "discount": 0,
+  "price": 2600,
+  "productList": [
+   {
+    "productCode": "1100",
+    "productName": "巨无霸",
+    "quantity": 1,
+    "originalSubtotal": 2600,
+    "subtotal": 2600
+   }
+  ],
+  "takeWayList": [
+   {
+    "code": "eat-in",
+    "title": "堂食",
+    "subtitle": "店内用餐"
+   },
+   {
+    "code": "take-in-store",
+    "title": "外带",
+    "subtitle": "店内自提"
+   }
+  ]
+ }
+}

@@ -1,0 +1,35 @@
+{
+ "success": true,
+ "code": 200,
+ "message": "请求成功",
+ "datetime": "2026-10-09 17:29:44",
+ "traceId": "fb4c698c85fffd46d5c42c49a3171372",
+ "data": [
+  {
+   "title": "麦旋风任选",
+   "couponId": "<REDACTED>",
+   "couponCode": "<REDACTED>",
+   "tradeDateTime": "2026-10-05 10:30:00-2026-10-09 23:59:59",
+   "products": [
+    {
+     "productCode": "9900014239",
+     "productName": "麦旋风任选1"
+    }
+   ],
+   "promotionId": "<REDACTED>"
+  },
+  {
+   "title": "薯薯任选",
+   "couponId": "<REDACTED>",
+   "couponCode": "<REDACTED>",
+   "tradeDateTime": "2026-10-05 10:30:00-2026-10-09 23:59:59",
+   "products": [
+    {
+     "productCode": "9900016370",
+     "productName": "薯薯任选"
+    }
+   ],
+   "promotionId": "<REDACTED>"
+  }
+ ]
+}

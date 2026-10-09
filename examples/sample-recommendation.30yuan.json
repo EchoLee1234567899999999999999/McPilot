@@ -1,0 +1,239 @@
+{
+  "store_code": "3330324",
+  "be_type": 1,
+  "be_code": null,
+  "request": {
+    "scene": "pickup",
+    "be_type": 1,
+    "be_code": null,
+    "city": null,
+    "keyword": null,
+    "store_code": "3330324",
+    "budget": 30,
+    "people": 1,
+    "goals": {
+      "protein_g_min": null,
+      "energy_kcal_max": null,
+      "energy_kcal_target": null,
+      "fat_g_max": null
+    },
+    "likes": [],
+    "dislikes": [],
+    "include_codes": [],
+    "use_coupon": true,
+    "strategies": [
+      "budget",
+      "nutrition",
+      "balanced"
+    ]
+  },
+  "recommendations": [
+    {
+      "strategy": "budget",
+      "label": "省钱优先",
+      "items": [
+        {
+          "code": "9900015568",
+          "name": "精选超值随心配",
+          "quantity": 1,
+          "role": "set",
+          "line_original_yuan": 13.9,
+          "line_payable_yuan": 13.9,
+          "nutrition": null
+        }
+      ],
+      "price": {
+        "original_cent": 1390,
+        "discount_cent": 0,
+        "payable_cent": 1390,
+        "original_yuan": 13.9,
+        "discount_yuan": 0.0,
+        "payable_yuan": 13.9
+      },
+      "nutrition": null,
+      "nutrition_missing": [
+        "精选超值随心配"
+      ],
+      "nutrition_complete": false,
+      "coupon": null,
+      "coupon_note": "未使用优惠券",
+      "score": 0.4812,
+      "reasons": [
+        "实付 ¥13.90（原价 ¥13.90，优惠 -¥0.00），在预算 ¥30.00 内，为候选方案中实付最低",
+        "本组合未使用优惠券（门店券不适用于该组合或未命中）",
+        "满足用餐需求：精选超值随心配×1，共 1 件"
+      ],
+      "notes": [
+        "营养未知（已在营养表中精确匹配失败，未计入合计）：精选超值随心配",
+        "未使用优惠券：门店券的适用商品未命中该组合。",
+        "该方案为单件组合（套餐本身即完整一餐）。"
+      ],
+      "data_source": "麦当劳官方 MCP（实时只读）· 工具：query-meals / list-nutrition-foods / query-store-coupons / calculate-price",
+      "queried_at": "2026-10-09 17:55:49"
+    },
+    {
+      "strategy": "nutrition",
+      "label": "高蛋白优先",
+      "items": [
+        {
+          "code": "9900003586",
+          "name": "双层深海鳕鱼堡",
+          "quantity": 1,
+          "role": "main",
+          "line_original_yuan": 25.0,
+          "line_payable_yuan": 25.0,
+          "nutrition": {
+            "name": "双层深海鳕鱼堡",
+            "energy_kcal": 485.0,
+            "protein_g": 28.0,
+            "fat_g": 21.0,
+            "carb_g": 46.0,
+            "sodium_mg": 917.0,
+            "calcium_mg": 147.0
+          }
+        },
+        {
+          "code": "515837",
+          "name": "圆筒冰淇淋",
+          "quantity": 1,
+          "role": "dessert",
+          "line_original_yuan": 5.0,
+          "line_payable_yuan": 5.0,
+          "nutrition": {
+            "name": "圆筒冰淇淋",
+            "energy_kcal": 93.0,
+            "protein_g": 2.0,
+            "fat_g": 3.0,
+            "carb_g": 14.0,
+            "sodium_mg": 36.0,
+            "calcium_mg": 77.0
+          }
+        }
+      ],
+      "price": {
+        "original_cent": 3000,
+        "discount_cent": 0,
+        "payable_cent": 3000,
+        "original_yuan": 30.0,
+        "discount_yuan": 0.0,
+        "payable_yuan": 30.0
+      },
+      "nutrition": {
+        "name": "合计",
+        "energy_kcal": 578.0,
+        "protein_g": 30.0,
+        "fat_g": 24.0,
+        "carb_g": 60.0,
+        "sodium_mg": 953.0,
+        "calcium_mg": 224.0
+      },
+      "nutrition_missing": [],
+      "nutrition_complete": true,
+      "coupon": null,
+      "coupon_note": "未使用优惠券",
+      "score": 0.7,
+      "reasons": [
+        "蛋白质合计 30.0 g、热量 578 kcal（为可可靠匹配营养的候选中蛋白质最高）",
+        "营养数据完整：组合内每件商品均在营养表中精确匹配，可参与定量排名",
+        "实付 ¥30.00，在预算内"
+      ],
+      "notes": [
+        "未使用优惠券：门店券的适用商品未命中该组合。"
+      ],
+      "data_source": "麦当劳官方 MCP（实时只读）· 工具：query-meals / list-nutrition-foods / query-store-coupons / calculate-price",
+      "queried_at": "2026-10-09 17:55:49"
+    },
+    {
+      "strategy": "balanced",
+      "label": "综合推荐",
+      "items": [
+        {
+          "code": "1120",
+          "name": "双层吉士汉堡",
+          "quantity": 1,
+          "role": "main",
+          "line_original_yuan": 23.0,
+          "line_payable_yuan": 23.0,
+          "nutrition": {
+            "name": "双层吉士汉堡",
+            "energy_kcal": 429.0,
+            "protein_g": 27.0,
+            "fat_g": 22.0,
+            "carb_g": 31.0,
+            "sodium_mg": 1017.0,
+            "calcium_mg": 232.0
+          }
+        },
+        {
+          "code": "515837",
+          "name": "圆筒冰淇淋",
+          "quantity": 1,
+          "role": "dessert",
+          "line_original_yuan": 5.0,
+          "line_payable_yuan": 5.0,
+          "nutrition": {
+            "name": "圆筒冰淇淋",
+            "energy_kcal": 93.0,
+            "protein_g": 2.0,
+            "fat_g": 3.0,
+            "carb_g": 14.0,
+            "sodium_mg": 36.0,
+            "calcium_mg": 77.0
+          }
+        }
+      ],
+      "price": {
+        "original_cent": 2800,
+        "discount_cent": 0,
+        "payable_cent": 2800,
+        "original_yuan": 28.0,
+        "discount_yuan": 0.0,
+        "payable_yuan": 28.0
+      },
+      "nutrition": {
+        "name": "合计",
+        "energy_kcal": 522.0,
+        "protein_g": 29.0,
+        "fat_g": 25.0,
+        "carb_g": 45.0,
+        "sodium_mg": 1053.0,
+        "calcium_mg": 309.0
+      },
+      "nutrition_missing": [],
+      "nutrition_complete": true,
+      "coupon": null,
+      "coupon_note": "未使用优惠券",
+      "score": 0.7319,
+      "reasons": [
+        "综合评分 0.73：蛋白质性价比 0.88｜分量充足度 1.00｜预算余量 0.07｜数据完整度 1.00",
+        "营养：蛋白质 29.0 g｜热量 522 kcal｜实付 ¥28.00"
+      ],
+      "notes": [
+        "未使用优惠券：门店券的适用商品未命中该组合。"
+      ],
+      "data_source": "麦当劳官方 MCP（实时只读）· 工具：query-meals / list-nutrition-foods / query-store-coupons / calculate-price",
+      "queried_at": "2026-10-09 17:55:49"
+    }
+  ],
+  "warnings": [
+    "门店券的适用商品未命中任何候选组合，本次均未使用优惠券。"
+  ],
+  "suggestions": [],
+  "stats": {
+    "menu_size": 125,
+    "candidates": 448,
+    "candidates_within_budget": 74,
+    "verified": 12,
+    "dropped_over_budget": 0,
+    "dropped_by_goals": 0,
+    "verify_failed": 0,
+    "mcp_calls": {
+      "query-meals": 1,
+      "list-nutrition-foods": 1,
+      "query-store-coupons": 1,
+      "calculate-price": 12
+    }
+  },
+  "data_source": "麦当劳官方 MCP（实时只读）· 工具：query-meals / list-nutrition-foods / query-store-coupons / calculate-price",
+  "queried_at": "2026-10-09 17:55:49"
+}

@@ -1,0 +1,22 @@
+{
+  "_fixture_note": "SYNTHETIC TEST FIXTURE — 仅用于离线单元测试，模拟“优惠券确实适用于某个菜单商品”的情形；这不是真实 MCP 返回，真实门店券见 coupons_3330324.redacted.json。",
+  "success": true,
+  "code": 200,
+  "message": "请求成功",
+  "datetime": "2026-10-09 17:45:00",
+  "data": [
+    {
+      "title": "【合成测试】指定商品立减",
+      "couponId": "SYNTHETIC-COUPON-ID",
+      "couponCode": "SYNTHETIC-COUPON-CODE",
+      "tradeDateTime": "2020-01-01 00:00:00-2035-12-31 23:59:59",
+      "products": [
+        {
+          "productCode": "1100",
+          "productName": "巨无霸"
+        }
+      ],
+      "promotionId": "SYNTHETIC-PROMOTION"
+    }
+  ]
+}

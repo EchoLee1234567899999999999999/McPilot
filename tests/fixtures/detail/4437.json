@@ -1,0 +1,13 @@
+{
+ "success": true,
+ "code": 200,
+ "message": "请求成功",
+ "datetime": "2026-10-09 18:14:31",
+ "traceId": "8345bda49d12274c030a0dd7341bb0bf",
+ "data": {
+  "code": "4437",
+  "name": "小杯玉米杯",
+  "rounds": [],
+  "supportModify": false
+ }
+}

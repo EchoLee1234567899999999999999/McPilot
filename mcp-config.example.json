@@ -1,0 +1,29 @@
+{
+  "_comment": "McPilot · 麦门决策局 —— 麦当劳 MCP 连接配置示例（脱敏）",
+  "_usage": [
+    "1. 本文件为【示例】，只包含环境变量占位符，不含任何真实凭据。",
+    "2. 请在本机 WorkBuddy 中按此结构配置，并把 YOUR_MCP_TOKEN 替换为你自己申请的 Token。",
+    "3. MCP Token 需自行申请：登录 https://mcp.mcd.cn → 右上角【控制台】→ 点击【激活】→ 复制 Token。",
+    "4. 切勿把填入真实 Token 后的配置提交到任何公开仓库。"
+  ],
+  "_workbuddySteps": [
+    "打开 WorkBuddy → 左侧边栏【专家·技能·连接器】→【连接器】页签",
+    "点击右上角【自定义连接器】→【配置 MCP】",
+    "粘贴下方 mcpServers 内容（替换占位符）→【保存】→ 回到【自定义连接器】把 mcd-mcp【启用】"
+  ],
+  "mcpServers": {
+    "mcd-mcp": {
+      "type": "streamablehttp",
+      "url": "https://mcp.mcd.cn",
+      "headers": {
+        "Authorization": "Bearer ${MCD_MCP_TOKEN}"
+      }
+    }
+  },
+  "_notes": {
+    "endpoint": "麦当劳 MCP 官方端点（streamable HTTP + JSON-RPC 2.0）",
+    "authHeader": "Authorization: Bearer <你的 MCP Token>",
+    "tokenPlaceholder": "${MCD_MCP_TOKEN} 或 YOUR_MCP_TOKEN —— 仅为占位符，不是真实凭据",
+    "readOnly": "本项目仅调用 6 个只读工具；任何写操作在客户端白名单处被拒绝"
+  }
+}

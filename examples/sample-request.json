@@ -1,0 +1,22 @@
+{
+  "_comment": "McPilot 示例输入（与 Skill 内 assets/request.example.json 一致；不含任何凭据、Token 或账号信息）。",
+  "scene": "pickup",
+  "be_type": 1,
+  "city": "示例城市",
+  "keyword": "示例商圈",
+  "store_code": "",
+  "budget": 30,
+  "people": 1,
+  "goals": {
+    "protein_g_min": 25,
+    "energy_kcal_max": 600,
+    "energy_kcal_target": null,
+    "fat_g_max": null
+  },
+  "likes": ["炸鸡"],
+  "dislikes": ["辣"],
+  "include_codes": [],
+  "use_coupon": true,
+  "strategies": ["budget", "nutrition", "balanced"],
+  "max_verify": 12
+}
