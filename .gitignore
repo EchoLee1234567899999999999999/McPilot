@@ -1,0 +1,52 @@
+# ===== 凭据与环境（严禁提交）=====
+.env
+.env.*
+!.env.example
+*.local
+*.secret
+secrets/
+
+# ===== Python =====
+__pycache__/
+*.py[cod]
+*.egg-info/
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+htmlcov/
+
+# ===== Node =====
+node_modules/
+dist/
+build/
+npm-debug.log*
+
+# ===== WorkBuddy 运行时数据 =====
+# 保留 .workbuddy/skills/（项目级 Skill 需随仓库分发）
+.workbuddy/memory/
+.workbuddy/cache/
+.workbuddy/logs/
+.workbuddy/session*/
+.workbuddy/*.local.json
+
+# ===== 日志与临时文件 =====
+*.log
+logs/
+tmp/
+temp/
+*.tmp
+# 开发过程中的临时目录（可能含本地会话/截图/探针输出，禁止提交）
+.tmp_*/
+.tmp*/
+
+# ===== IDE / OS =====
+.vscode/
+.idea/
+*.swp
+.DS_Store
+Thumbs.db
+desktop.ini
